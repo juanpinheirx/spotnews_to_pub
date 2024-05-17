@@ -1,6 +1,10 @@
 from django.core.exceptions import ValidationError
 
 
-def validate_name(value):
-    if len(value) == 0 or len(value) < 200:
-        raise ValidationError("Name must be between 1 and 200 characters")
+def validate_fields(value):
+    if len(value) == 0:
+        raise ValidationError("Este campo não pode estar vazio.")
+    elif len(value) > 200:
+        raise ValidationError(
+            f"Certifique-se de que o valor tenha no máximo 200 caracteres (ele possui {len(value)})."  # noqa
+        )
