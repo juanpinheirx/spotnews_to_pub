@@ -8,3 +8,31 @@ def validate_fields(value):
         raise ValidationError(
             f"Certifique-se de que o valor tenha no máximo 200 caracteres (ele possui {len(value)})."  # noqa
         )
+
+
+def validate_title_with_two_words(value):
+    if len(value.split()) == 1:
+        raise ValidationError(
+            "Certifique-se de que o título tenha pelo menos duas palavras."
+        )
+
+
+def validate_if_is_not_blank(value):
+    if value == "":
+        raise ValidationError(
+            f"Certifique-se de que o valor tenha no máximo 200 caracteres (ele possui {len(value)})."  # noqa
+        )
+
+
+def validate_fields_with_200(value):
+    if len(value) > 200:
+        raise ValidationError(
+            f"Certifique-se de que o valor tenha no máximo 200 caracteres (ele possui {len(value)})."  # noqa
+        )
+
+
+def validate_date_format(value):
+    if not value.strftime("%Y-%m-%d"):
+        raise ValidationError(
+            f"O valor {value} tem um formato de data inválido. Deve ser no formato  YYYY-MM-DD."  # noqa
+        )
