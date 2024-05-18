@@ -12,9 +12,7 @@ def validate_fields(value):
 
 def validate_title_with_two_words(value):
     if len(value.split()) == 1:
-        raise ValidationError(
-            "Certifique-se de que o título tenha pelo menos duas palavras."
-        )
+        raise ValidationError("O título deve conter pelo menos 2 palavras.")
 
 
 def validate_if_is_not_blank(value):

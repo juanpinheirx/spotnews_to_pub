@@ -38,13 +38,11 @@ class News(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="news"
     )
-    created_at = models.DateField(
-        auto_now_add=True, validators=[validate_date_format]
-    )
+    created_at = models.DateField(validators=[validate_date_format])
     image = models.ImageField(upload_to="img/", null=True, blank=True)
     categories = models.ManyToManyField(
         Category, related_name="news", validators=[validate_if_is_not_blank]
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
