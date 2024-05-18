@@ -16,7 +16,7 @@ def validate_title_with_two_words(value):
 
 
 def validate_if_is_not_blank(value):
-    if value == "":
+    if len(value) == 0:
         raise ValidationError(
             f"Certifique-se de que o valor tenha no máximo 200 caracteres (ele possui {len(value)})."  # noqa
         )

@@ -5,8 +5,8 @@ from news.models import News
 
 # Create your views here.
 def home(request):
-    context = {"news": News.objects.all()}
-    return render(request, "home.html", context)
+    news = {"news_list": News.objects.all()}
+    return render(request, "home.html", news)
 
 
 def details(request, id):
