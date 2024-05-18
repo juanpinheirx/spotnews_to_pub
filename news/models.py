@@ -1,7 +1,6 @@
 from django.db import models
 from utils.validators import (
     validate_date_format,
-    validate_fields,
     validate_fields_with_200,
     validate_if_is_not_blank,
     validate_title_with_two_words,
@@ -9,17 +8,32 @@ from utils.validators import (
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=200, validators=[validate_fields])
+    name = models.CharField(
+        max_length=200,
+        validators=[validate_if_is_not_blank, validate_fields_with_200],
+    )
 
     def __str__(self):
         return self.name
 
 
 class User(models.Model):
-    name = models.CharField(max_length=200, validators=[validate_fields])
-    email = models.EmailField(max_length=200, validators=[validate_fields])
-    password = models.CharField(max_length=200, validators=[validate_fields])
-    role = models.CharField(max_length=200, validators=[validate_fields])
+    name = models.CharField(
+        max_length=200,
+        validators=[validate_if_is_not_blank, validate_fields_with_200],
+    )
+    email = models.EmailField(
+        max_length=200,
+        validators=[validate_if_is_not_blank, validate_fields_with_200],
+    )
+    password = models.CharField(
+        max_length=200,
+        validators=[validate_if_is_not_blank, validate_fields_with_200],
+    )
+    role = models.CharField(
+        max_length=200,
+        validators=[validate_if_is_not_blank, validate_fields_with_200],
+    )
 
     def __str__(self):
         return self.name
