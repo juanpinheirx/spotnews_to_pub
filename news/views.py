@@ -10,9 +10,5 @@ def home(request):
 
 
 def details(request, id):
-    try:
-        news = get_object_or_404(News, id=id)
-        context = {"news": news}
-        return render(request, "news_details.html", context)
-    except Http404:
-        return render(request, "404.html")
+    news = {"news": get_object_or_404(News, id=id)}
+    return render(request, "news_details.html", news)
